@@ -11,3 +11,99 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.dashHome{
+  display: flex;
+  gap: 10px;
+}
+
+.sidebar ul{
+  list-style-type: none;
+  margin: 0%;
+  padding: 10px;
+  background-color: rgb(16, 16, 16);
+  height: 100vh;
+  width: 150px;
+}
+
+
+.sidebar li{
+  margin: auto;
+  padding: 10px;
+}
+.head-logo{
+  display: flex;
+  height: 30px;
+  font-size: large;
+  color: antiquewhite;
+ justify-items: center;
+}
+.head-logo h4{
+  justify-content: center;
+  margin: auto;
+  padding-bottom: 10px;
+}
+.divider{
+  background-color:rgb(217, 207, 207);
+  height: .1px;
+  margin: 5px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.nav-item{
+  display: flex;
+  padding: 5px;
+  border-radius: 10px;
+  justify-content:flex-start;
+
+}
+.nav-item:hover{
+  background-color:rgb(111, 110, 109);
+  cursor: pointer;
+}
+.nav-item-active{
+  background-color: blue;
+  display: flex;
+  padding: 5px;
+  border-radius: 10px;
+  justify-content:flex-start;
+}
+
+.nav-item-active:hover{
+  cursor: pointer;
+}
+.nav-item-a{
+  text-decoration: none;
+  color: rgb(205, 202, 202);
+  display: flex;
+  justify-content: center;
+  font-size: large;
+}
+.icon{
+  color: rgb(205, 202, 202);
+  font-size: 18px;
+  margin: auto;
+  padding-right:5px ;
+  padding-top: 1px;
+}
+
+.log-out-div{
+  display: flex;
+  position:fixed;
+  bottom:10%;
+  left:2%;
+  padding: 5px;
+}
+
+.log-out-a{
+  text-decoration: none;
+}
+ .log-icon{
+  justify-content: center;
+  display: inline; 
+}
+
+.icon-log-out{
+  padding-right: 4px;
+}
