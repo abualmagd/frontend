@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiFillAppstore } from "react-icons/ai";
 import { AiOutlineSearch } from "react-icons/ai";
-import { AiOutlineComment, AiOutlineTeam, AiOutlineCalendar } from "react-icons/ai";
-import { BsBookmark, BsGear,BsBoxArrowLeft } from "react-icons/bs";
+import { AiOutlineComment, AiOutlineTeam, AiOutlineCalendar} from "react-icons/ai";
+import { BsBookmark, BsGear,BsBoxArrowLeft,BsX,BsList} from "react-icons/bs";
 
 export default function SideBare(props) {
-    console.log(props.index);
+    const [open,setOpen]=useState(true);
 
     const isActive = (index) => {
         if (props.index === index) {
@@ -14,19 +14,37 @@ export default function SideBare(props) {
         return "nav-item";
     }
 
-    return (
-        <div className="sidebar">
-            <ul>
-                <li>
+    const showCloseIcon = (open) => {
+        if (open === true) {
+            return "open-nav-icon-close";
+        }
+        return "open-nav-icon";
+    }
 
-                </li>
+    const wrap = (open) => {
+        if (open === true) {
+            return "wrapper";
+        }
+        return "wrapper-close";
+    }
+    
+    const handleClick=()=>{
+       setOpen(!open);
+    }
+    return (
+        <div className={wrap(open)} >
+             
+        <div  className="sidebar">
+            <div id="nav-ul">
+
                 <div className="head-logo">
                     <h4>FlowFed</h4>
+                    <BsX className="close-icon" onClick={handleClick}/>
+                   
                 </div>
                 <div className="divider">
 
                 </div>
-                <li>
                     <div
                         className={isActive(0)} onClick={() => props.changeNavIndex(Event, 0)}>
                         <a className="nav-item-a" href="/#">
@@ -36,8 +54,6 @@ export default function SideBare(props) {
                             Home
                         </a>
                     </div>
-                </li>
-                <li>
                     <div className={isActive(1)} onClick={() => props.changeNavIndex(Event, 1)}>
                         <a className="nav-item-a" href="/#">
                             <div className="icon">
@@ -46,9 +62,7 @@ export default function SideBare(props) {
                             Search
                         </a>
                     </div>
-                </li>
 
-                <li>
                     <div className={isActive(2)} onClick={() => props.changeNavIndex(Event, 2)}>
                         <a className="nav-item-a" href="/#">
                             <div className="icon">
@@ -57,8 +71,6 @@ export default function SideBare(props) {
                             Spaces
                         </a>
                     </div>
-                </li>
-                <li>
                     <div className={isActive(3)} onClick={() => props.changeNavIndex(Event, 3)}>
                         <a className="nav-item-a" href="/#">
                             <div className="icon">
@@ -67,8 +79,6 @@ export default function SideBare(props) {
                             Accounts
                         </a>
                     </div>
-                </li>
-                <li>
                     <div className={isActive(4)} onClick={() => props.changeNavIndex(Event, 4)}>
                         <a className="nav-item-a" href="/#">
                             <div className="icon">
@@ -77,9 +87,7 @@ export default function SideBare(props) {
                             Calender
                         </a>
                     </div>
-                </li>
-                <li>
-                    <div className={isActive(5)} onClick={() => props.changeNavIndex(Event, 5)}>
+                   <div className={isActive(5)} onClick={() => props.changeNavIndex(Event, 5)}>
                         <a className="nav-item-a" href="/#">
                             <div className="icon">
                                 <BsBookmark className="icon" />
@@ -87,8 +95,8 @@ export default function SideBare(props) {
                             Bookmarks
                         </a>
                     </div>
-                </li>
-                <li>
+                
+                
                     <div className={isActive(6)} onClick={() => props.changeNavIndex(Event, 6)}>
                         <a className="nav-item-a" href="/#">
                             <div className="icon">
@@ -97,9 +105,8 @@ export default function SideBare(props) {
                             Settings
                         </a>
                     </div>
-                </li>
-            </ul>
-            <div className="log-out-div">
+                
+                <div className="log-out-div">
                           <a className="log-out-a" href="/#">
                 <div className="log-icon">
                     <BsBoxArrowLeft className="icon-log-out" />
@@ -107,9 +114,12 @@ export default function SideBare(props) {
                 LogOut
             </a>
             </div>
-  
+                
+            </div>
 
+  </div>
 
+ <BsList className={showCloseIcon(open)} onClick={handleClick} />
         </div>
     );
 }
