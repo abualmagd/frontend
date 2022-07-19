@@ -1,10 +1,10 @@
-import DashHome from "./component/dashboard/dashHome";
+import DashBoard from "./component/dashboard/dashboard";
 
 
 function App() {
   return (
     <div className="App">
-      <DashHome/>
+      <DashBoard/>
     </div>
   );
 }

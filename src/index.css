@@ -12,7 +12,7 @@ code {
     monospace;
 }
 
-.dashHome{
+.dashBoard{
   display: flex;
   gap: 10px;
   position: relative;
@@ -40,13 +40,21 @@ code {
 
 }
 .open-nav-icon{
-  opacity: 1;
-  
   position: absolute;
-  top: 0;
+  top: 15px;
   left: 5px;
+  background-color: grey;
+  padding-left: 2px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 5px;
+  color: aliceblue;
+  border-bottom-right-radius: 6px;
+  border-top-right-radius: 6px;
   font-size: x-large;
   transition: font-size 1s ease ;
+  z-index: 3;
+  
 }
  #nav-ul{
   margin: 0%;
@@ -145,13 +153,80 @@ code {
   height: 100vh;
 }
 .dashboard-view{
- padding-top: 10px;
+ margin-top: 15px;
+ margin-left: 5px;
+ flex:2;
+ min-width: 400px;
 }
 
 
 .dash-view-home{
   background-color: red ;
-  width: 500px;
-  height: 500px;
+  height: 600px;
+  flex: 1;
 }
 
+.dash-post{
+  display: flex;
+  min-width: 350px;
+  height: 100vw;
+  background-color: aqua;
+  margin-top: 15px;
+  margin-right: 15px;
+}
+.dash-post-float-boaton{
+  display: none;
+  position: fixed;
+  align-self: auto;
+  justify-content: center;
+  font-size: 2rem;
+  bottom: 15px;
+  right:15px;
+  color: antiquewhite;
+  background-color:  rgb(83, 83, 159);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  z-index: 3;
+  box-shadow: 10px 10px 15px  #333335 ;
+}
+
+
+
+.search-query{
+  margin-left: 30px;
+  margin-top: 20px;
+}
+
+.search-query-form{
+  display: flex;  
+  flex-wrap: wrap;
+}
+
+.search-query-form input{
+  height: 1.5rem;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  border-radius: 5px;
+  border: 0cm;
+}
+
+.search-query-form input:focus-visible{
+  border: .5em #4a4af4;
+}
+
+@media screen and (max-width:1000px){
+  .dash-post{
+    display: none;
+  }
+
+  .dash-post-float-boaton{
+    display: flex;
+  }
+
+  .search-query{
+    margin-left: 60px;
+    margin-top: 35px;
+  }
+  
+}
