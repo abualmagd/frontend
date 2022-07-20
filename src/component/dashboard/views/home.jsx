@@ -1,12 +1,15 @@
 import React from "react";
+import Tweet from "./tweet";
 
-
+function search(){
+  return true;
+}
 export default function Home(){
 
     return (
             <section className="dash-view-home">
                 <div className="search-section">
-                    <form className="search-section-form">
+                    <form className="search-section-form" action="#" onSubmit={search}>
                    <input type="text"  placeholder="Keywords" required/>
                     <select name="search-type" id="searchtype" selected="popular">
                       <option value="popular">popular</option>
@@ -17,7 +20,15 @@ export default function Home(){
                 </div>
 
                 <section className="serch-result-section">
-                  here your search here 
+                  <Tweet />
+                  <Tweet />
+                  <Tweet />
+                  <Tweet />
+                  <Tweet />
+                  <Tweet />
+                  <Tweet />
+                  <Tweet />
+                  <Tweet />
                 </section>
 
            </section>
