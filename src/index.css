@@ -19,6 +19,7 @@ code {
 }
 
 .wrapper{
+  
   margin: 0px ;
   width: 176px;
   transition: margin 1s ease;
@@ -32,8 +33,9 @@ code {
 .sidebar{
   position:fixed;
   display: flex;
-
+  height: 100vh;
 }
+
 .open-nav-icon-close{
   font-size: 0px;
   transition: font-size 1s ease ;
@@ -148,22 +150,21 @@ code {
   padding-right: 4px;
 }
 
-.sidbare-shadow{
-  width: 165px;
-  height: 100vh;
-}
+
 .dashboard-view{
  margin-top: 15px;
  margin-left: 5px;
- flex:2;
  min-width: 400px;
+ flex: 2;
 }
 
 
 .dash-view-home{
-  background-color: red ;
-  height: 600px;
+  height: 100vh;
   flex: 1;
+  align-items: center;
+  justify-content: center;
+  padding-left:15px ;
 }
 
 .dash-post{
@@ -193,27 +194,66 @@ code {
 
 
 
-.search-query{
+.search-section{
   margin-left: 30px;
   margin-top: 20px;
 }
 
-.search-query-form{
+.search-section-form{
   display: flex;  
   flex-wrap: wrap;
+  align-items: center;
+  justify-content:center;
 }
 
-.search-query-form input{
-  height: 1.5rem;
+.search-section-form input{
+  height: 1.6rem;
   margin-bottom: 5px;
-  margin-right: 5px;
+  margin-right: 15px;
+  padding-left: 5px;
   border-radius: 5px;
-  border: 0cm;
+  border: 0px;
+  background-color: rgb(246, 241, 241);
 }
 
-.search-query-form input:focus-visible{
-  border: .5em #4a4af4;
+.search-section-form select{
+  height: 1.6rem;
+  margin-bottom: 5px;
+  margin-right: 15px;
+  padding-left: 5px;
+  border-radius: 5px;
+  border: 0px;
+  outline: none;
+  background-color: rgb(246, 241, 241);
 }
+
+.search-section-form input[type=text]:focus{
+  outline: none;
+  border: 1px solid rgb(142, 12, 34) ;
+  border-bottom: 3px solid rgb(142, 12, 34);
+}
+
+.search-section-button{
+  width: calc(100%/4);
+  box-shadow: 0px;
+  color: blueviolet;
+  padding: 5px;
+}
+
+.search-section-button:hover{
+  cursor: pointer;
+  background-color: rgb(169, 169, 234);
+  box-shadow: 5px 5px 5px -5px #333335;
+  transition:  all .7s ease;
+}
+
+.serch-result-section{
+  background-color: blue;
+  height: 100vh;
+  margin-top: 10px;
+}
+
+
 
 @media screen and (max-width:1000px){
   .dash-post{
@@ -229,4 +269,13 @@ code {
     margin-top: 35px;
   }
   
+}
+
+@media screen and (max-width:400px) {
+ .serch-result-section, .dash-view-home{
+    padding-left: 35px;
+    padding-top: 15px;
+  }
+
+
 }
