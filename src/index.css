@@ -279,10 +279,10 @@ code {
   border:1px solid #DEDEDE;
 }
 
-.tweet-card:hover{
+/*.tweet-card:hover{
   cursor: pointer;
   background-color:#F5F5F5;
-}
+}*/
 
 .tweet-head{
   display: flex;
@@ -318,7 +318,14 @@ code {
   font-size: .8rem;
   padding-left: 3px;
 }
-
+.tweet-created-ago{
+  font-size: .7rem;
+  font-weight: 200;
+  padding-left: 5px;
+}
+.tweet-created-ago::before{
+content: '·';
+}
 .tweet-actions{
   margin: 5px;
   display: flex;
@@ -330,8 +337,14 @@ code {
   display: flex;
   justify-content: center;
   align-items: center;
+ height: 45px;
+ width: 45px;
 }
-
+.tweet-button:hover{
+  cursor: pointer;
+  background-color:#f7f3f3;
+  border-radius: 50%;
+}
 .icon-number{
   font-size: .7rem;
   color: grey;
