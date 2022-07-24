@@ -277,6 +277,7 @@ code {
   border-radius: 5px;
   margin: 10px;
   border:1px solid #DEDEDE;
+  position: relative;
 }
 
 /*.tweet-card:hover{
@@ -351,11 +352,42 @@ content: '·';
   padding-left:5px ;
 }
 
+.alert{
+  width: 500px;
+  height: 500px;
+  background-color: blueviolet;
+  border-radius: 15%;
+  z-index: 3;
+  position: absolute;
+  top: 0;
 
+}
 
-
-
-
+.alert-enter {
+  opacity: 0;
+  transform: scale(0.9);
+  width: 500px;
+  background-color: brown;
+}
+.alert-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 500ms, transform 300ms;
+  width: 500px;
+  background-color: brown;
+}
+.alert-exit {
+  opacity: 1;
+  width: 500px;
+  background-color: brown;
+}
+.alert-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 500ms, transform 300ms;
+  width: 500px;
+  background-color: brown;
+}
 
 @media screen and (max-width:1000px){
   .dash-post{

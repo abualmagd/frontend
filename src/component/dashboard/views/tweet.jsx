@@ -1,26 +1,15 @@
 import React, { useState } from "react";
 import { AiOutlineComment, AiOutlineRetweet, AiOutlineHeart } from "react-icons/ai";
-import Modal from "react-modal";
-
+import { CSSTransition } from 'react-transition-group';
+//import Modal from "react-modal";
 export default function Tweet(props) {
-    const customStyles = {
-        content: {
-            position:'fixed',
-            top: '20%',
-            left: '30%',
-            right:'50%',
-            bottom:'50%',
-           maxWidth:"500px"
-        
-        },
-        
-        
-    };
-    console.log(props.tweet);
+ 
+    const nodeRef = React.useRef(null);
     const [replayAlert, showReplayAlert] = useState(false);
+
     function replay() {
-        console.log('open alert');
         showReplayAlert(true);
+        console.log(replayAlert);
     }
 
     function closeReplay() {
@@ -44,7 +33,7 @@ export default function Tweet(props) {
                         omnis deserunt quo id consequuntur
                         similique veritatis blanditiis repellat quisquam!
                     </p>
-                    <div className="tweet-actions-modals">
+                    
                         <div className="tweet-actions">
                             <div className="tweet-button" >
                                 <AiOutlineHeart className="tweet-icon" />
@@ -63,23 +52,23 @@ export default function Tweet(props) {
                                 <span className="icon-number">135</span>
                             </div>
                         </div>
-                        <Modal isOpen={replayAlert}
-                            style={customStyles}
-                            contentLabel="replay modal"
-                            id="replay"
-                            ariaHideApp={false}
-                            shouldCloseOnEsc={true}
-                            onRequestClose={closeReplay}
-                        
-                            >
-                                <div className="replay-alert-header">
-                                    <div className="replay-to">replay to @ismail</div>
-                                    <div className="button-close-replay"  onClick={closeReplay}>close</div>
-                                </div>
-                            </Modal>
+                             
                     </div>
                 </div>
-            </div>
+                
+              <CSSTransition
+                   key={props.tweet.id}
+                   in={replayAlert}
+                 timeout={500}
+                className="alert"
+                unmountOnExit
+                nodeRef={nodeRef}> 
+                    <div className="replay-custom-card">
+                        <button onClick={closeReplay}>clos</button>
+                    </div>
+                </CSSTransition>
+                
+        
         </div>
     );
 }
