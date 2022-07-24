@@ -6,8 +6,28 @@ function search(){
 }
 export default function Home(){
 
+const tweetData=[{id:1,content:"tweeet ty bty fity"},
+{id:2,content:"tweeet ty bty fity"},
+{id:3,content:"tweeet ty bty fity"},
+{id:4,content:"tweeet ty bty fity"},
+{id:5,content:"tweeet ty bty fity"},
+{id:6,content:"tweeet ty bty fity"},
+{id:7,content:"tweeet ty bty fity"},
+{id:8,content:"tweeet ty bty fity"},
+{id:9,content:"tweeet ty bty fity"},
+{id:10,content:"tweeet ty bty fity"},
+{id:11,content:"tweeet ty bty fity"}];
+
+
+const tweetArray=tweetData.map(t=>{
+  return <Tweet key={t.id} tweet={t} dd='love' />
+}
+);
+
+
+
     return (
-            <section className="dash-view-home">
+            <section className="dash-view-home" >
                 <div className="search-section">
                     <form className="search-section-form" action="#" onSubmit={search}>
                    <input type="text"  placeholder="Keywords" required/>
@@ -20,15 +40,7 @@ export default function Home(){
                 </div>
 
                 <section className="serch-result-section">
-                  <Tweet />
-                  <Tweet />
-                  <Tweet />
-                  <Tweet />
-                  <Tweet />
-                  <Tweet />
-                  <Tweet />
-                  <Tweet />
-                  <Tweet />
+                {tweetArray}
                 </section>
 
            </section>
