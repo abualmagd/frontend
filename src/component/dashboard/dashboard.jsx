@@ -13,7 +13,7 @@ const changeIndex=(event,index)=>{
 
 
     return (
-        <div className="dashBoard">
+        <div className="dashBoard" id="dashBoard">
         <SideBare index={index}  function changeNavIndex={changeIndex} />
         <View  index={index}/>
         <Post />

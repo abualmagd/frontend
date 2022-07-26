@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineComment, AiOutlineRetweet, AiOutlineHeart } from "react-icons/ai";
 import { CSSTransition } from 'react-transition-group';
 //import Modal from "react-modal";
@@ -15,6 +15,12 @@ export default function Tweet(props) {
     function closeReplay() {
         showReplayAlert(false);
     }
+
+    useEffect(()=>{
+        document.getElementById('dashBoard').addEventListener("click",closeReplay);
+    },[]);
+   
+
     return (
         <div className="tweet-card" id="tweetId">
             <div className="tweet-head">
@@ -41,7 +47,7 @@ export default function Tweet(props) {
 
                             </div>
 
-                            <div className="tweet-button" onClick={replay}>
+                            <div className="tweet-button" onClick={replay} id="except">
                                 <AiOutlineComment className="tweet-icon" />
                                 <span className="icon-number">5</span>
 

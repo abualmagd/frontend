@@ -352,9 +352,11 @@ content: '·';
   padding-left:5px ;
 }
 
+
 .alert{
-  width: 500px;
-  height: 500px;
+  min-width: 300px;
+  max-width: 400px;
+  height: 300px;
   background-color: blueviolet;
   border-radius: 15%;
   z-index: 3;
@@ -364,15 +366,14 @@ content: '·';
 }
 
 .alert-enter {
-  opacity: 0;
+  opacity: 1;
   transform: scale(0.9);
   width: 500px;
   background-color: brown;
 }
 .alert-enter-active {
   opacity: 1;
-  transform: translateX(0);
-  transition: opacity 500ms, transform 300ms;
+  transition: opacity 1s, transform 300ms;
   width: 500px;
   background-color: brown;
 }
@@ -383,8 +384,7 @@ content: '·';
 }
 .alert-exit-active {
   opacity: 0;
-  transform: scale(0.9);
-  transition: opacity 500ms, transform 300ms;
+  transition: opacity 1s, transform 300ms;
   width: 500px;
   background-color: brown;
 }
