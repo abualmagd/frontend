@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React,{ useEffect, useState } from "react";
 import { AiOutlineComment, AiOutlineRetweet, AiOutlineHeart } from "react-icons/ai";
 import { CSSTransition } from 'react-transition-group';
 //import Modal from "react-modal";
@@ -13,11 +13,24 @@ export default function Tweet(props) {
     }
 
     function closeReplay() {
+        console.log('home pressed');
         showReplayAlert(false);
     }
+//any fucken modal 
 
     useEffect(()=>{
-        document.getElementById('dashBoard').addEventListener("click",closeReplay);
+      if(alert !=null){
+        console.info('fuckededddd')
+             alert.addEventListener('click',(ev)=>{
+                console.log("in the except")
+                 ev.stopPropagation();
+                return;
+            });   
+        }        
+        
+     document.getElementById('home').addEventListener("click",closeReplay);
+
+
     },[]);
    
 
@@ -61,17 +74,29 @@ export default function Tweet(props) {
                              
                     </div>
                 </div>
-                
+    
               <CSSTransition
                    key={props.tweet.id}
                    in={replayAlert}
                  timeout={500}
                 className="alert"
-                unmountOnExit
+                unmountOnExit 
                 nodeRef={nodeRef}> 
-                    <div className="replay-custom-card">
-                        <button onClick={closeReplay}>clos</button>
+                <div>  
+                                  <div className="replay-custom-card" id={props.tweet.id}  >
+                        
+                        
+                        <textarea type="text" className="input-reply" id="#reply-input"  placeholder="  
+                         replay to @ismail">
+                        </textarea>
+                        <div className="alert-actions"> 
+                        
+                        <div className="discard-button" onClick={closeReplay}>cancel</div>
+                        <div className="send-button">send</div>
+                        </div>
                     </div>
+                </div>
+
                 </CSSTransition>
                 
         
