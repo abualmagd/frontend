@@ -360,7 +360,7 @@ content: '·';
   justify-items: center;
   z-index: 13;
   position: absolute;
-  top: 30;
+  top:1;
   border-radius: 5%;
 }
 
@@ -399,7 +399,7 @@ content: '·';
 
 
 .input-reply{
-  width: 98%;
+  width: 99%;
   height: 80%;
   outline: none;
   border: none;

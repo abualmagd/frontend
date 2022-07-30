@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import Tweet from "./tweet";
 
 function search(){
@@ -20,9 +20,16 @@ const tweetData=[{id:1,content:"tweeet ty bty fity jnjhbhj"},
 
 
 const tweetArray=tweetData.map(t=>{
-  return <Tweet key={t.id} tweet={t}  />
+  return <Tweet key={t.id} tweet={t}  function showAlertReplay={()=>replay} />
 }
 );
+
+const [replayAlert, showReplayAlert] = useState(false);
+
+function replay() {
+    showReplayAlert(!replayAlert);
+    console.log(replayAlert);
+}
 
 
 

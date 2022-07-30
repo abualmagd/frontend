@@ -8,7 +8,7 @@ export default function Tweet(props) {
     const [replayAlert, showReplayAlert] = useState(false);
 
     function replay() {
-        showReplayAlert(true);
+        showReplayAlert(!replayAlert);
         console.log(replayAlert);
     }
 
@@ -16,23 +16,23 @@ export default function Tweet(props) {
         console.log('home pressed');
         showReplayAlert(false);
     }
-//any fucken modal 
 
-    useEffect(()=>{
-      if(alert !=null){
-        console.info('fuckededddd')
-             alert.addEventListener('click',(ev)=>{
-                console.log("in the except")
-                 ev.stopPropagation();
-                return;
-            });   
-        }        
-        
-     document.getElementById('home').addEventListener("click",closeReplay);
+useEffect(()=>{
+    
+document.getElementById('dashBoard').addEventListener("click",(event)=>{
+    console.log(event.target.className);
+    if(event.target.className==='input-reply'||event.target.className==='alert-actions'||event.target.className==='replay-custom-card'){
+        console.log('not close')
+        event.stopPropagation();
+        event.preventDefault();
+      //  event.cancelable;
+     return   event.stopImmediatePropagation();
 
+    }
+    return closeReplay();
+});
 
-    },[]);
-   
+},[]); 
 
     return (
         <div className="tweet-card" id="tweetId">
@@ -83,7 +83,7 @@ export default function Tweet(props) {
                 unmountOnExit 
                 nodeRef={nodeRef}> 
                 <div>  
-                                  <div className="replay-custom-card" id={props.tweet.id}  >
+                           <div className="replay-custom-card" id="alertBody" >
                         
                         
                         <textarea type="text" className="input-reply" id="#reply-input"  placeholder="  
