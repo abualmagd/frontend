@@ -5,24 +5,29 @@ import { CSSTransition } from 'react-transition-group';
 export default function Tweet(props) {
  
     const nodeRef = React.useRef(null);
+    const inputRef=React.useRef(null);
     const [replayAlert, showReplayAlert] = useState(false);
-
+    const [retweetAlert, showRetweetAlert] = useState(false);
     function replay() {
         showReplayAlert(!replayAlert);
-        console.log(replayAlert);
+    }
+
+    function retweet(){
+        showRetweetAlert(!retweetAlert);
     }
 
     function closeReplay() {
-        console.log('home pressed');
         showReplayAlert(false);
+        showRetweetAlert(false);
+    }
+    function getData(){
+        console.log(inputRef.current.value);
     }
 
 useEffect(()=>{
     
 document.getElementById('dashBoard').addEventListener("click",(event)=>{
-    console.log(event.target.className);
     if(event.target.className==='input-reply'||event.target.className==='alert-actions'||event.target.className==='replay-custom-card'){
-        console.log('not close')
         event.stopPropagation();
         event.preventDefault();
       //  event.cancelable;
@@ -66,7 +71,7 @@ document.getElementById('dashBoard').addEventListener("click",(event)=>{
 
                             </div>
 
-                            <div className="tweet-button">
+                            <div className="tweet-button" onClick={retweet}>
                                 <AiOutlineRetweet className="tweet-icon" />
                                 <span className="icon-number">135</span>
                             </div>
@@ -86,13 +91,34 @@ document.getElementById('dashBoard').addEventListener("click",(event)=>{
                            <div className="replay-custom-card" id="alertBody" >
                         
                         
-                        <textarea type="text" className="input-reply" id="#reply-input"  placeholder="  
-                         replay to @ismail">
+                        <textarea type="text" ref={inputRef} className="input-reply" id="#reply-input" maxLength={280} rows={4}  placeholder="replay to @ismail">
                         </textarea>
                         <div className="alert-actions"> 
                         
                         <div className="discard-button" onClick={closeReplay}>cancel</div>
-                        <div className="send-button">send</div>
+                        <div className="send-button" onClick={getData}>send</div>
+                        </div>
+                    </div>
+                </div>
+
+                </CSSTransition>
+                <CSSTransition
+                   key={props.tweet.id+12}
+                   in={retweetAlert}
+                 timeout={500}
+                className="alert"
+                unmountOnExit 
+                nodeRef={nodeRef}> 
+                <div>  
+                           <div className="replay-custom-card"  >
+                        
+                        
+                        <textarea type="text" ref={inputRef} className="input-reply" id="#reply-input" maxLength={280} rows={4}  defaultValue={props.tweet.content}>
+                        </textarea>
+                        <div className="alert-actions"> 
+                        
+                        <div className="discard-button" onClick={closeReplay}>cancel</div>
+                        <div className="send-button" onClick={getData}>send</div>
                         </div>
                     </div>
                 </div>

@@ -20,7 +20,7 @@ code {
 }
 
 .wrapper{
-  
+z-index: 2000;  
   margin: 0px ;
   width: 176px;
   transition: margin 1s ease;
@@ -354,7 +354,7 @@ content: '·';
 
 
 .alert{
-  background-color: #DEDEDE;
+  background-color: white;
   display: flex;
   justify-content: center;
   justify-items: center;
@@ -388,10 +388,9 @@ content: '·';
   flex-direction: column;
   justify-content: space-between;
   justify-items: center;
-  min-width: 400px;
+  min-width: 300px;
   max-width: 400px;
   height: 200px;
-  background-color: rgba(247, 245, 249, 0.402);
   border-radius: 5%;
   box-shadow: 5px 5px 15px  -5px #333335;
 }
@@ -399,12 +398,15 @@ content: '·';
 
 
 .input-reply{
-  width: 99%;
+  padding: 15px;
+  min-width:300px;
   height: 80%;
   outline: none;
   border: none;
   border-radius: 5%;
-  
+  max-lines: 5;
+  resize:none;
+  overflow: hidden;
 }
 .alert-actions{
   display: flex;

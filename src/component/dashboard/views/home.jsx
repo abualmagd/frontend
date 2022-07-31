@@ -8,15 +8,15 @@ export default function Home(){
 
 const tweetData=[{id:1,content:"tweeet ty bty fity jnjhbhj"},
 {id:2,content:"tweeet ty bty fity"},
-{id:3,content:"tweeet ty bty fity"},
-{id:4,content:"tweeet ty bty fity"},
-{id:5,content:"tweeet ty bty fity"},
-{id:6,content:"tweeet ty bty fity"},
-{id:7,content:"tweeet ty bty fity"},
-{id:8,content:"tweeet ty bty fity"},
-{id:9,content:"tweeet ty bty fity"},
-{id:10,content:"tweeet ty bty fity"},
-{id:11,content:"tweeet ty bty fity"}];
+{id:3,content:"tweeet ty bty fity 2"},
+{id:4,content:"tweeet ty bty fity 3"},
+{id:5,content:"tweeet ty bty fity 4"},
+{id:6,content:"tweeet ty bty fity 5"},
+{id:7,content:"tweeet ty bty fity 6"},
+{id:8,content:"tweeet ty bty fity 7"},
+{id:9,content:"tweeet ty bty fity 8"},
+{id:10,content:"tweeet ty bty fity 9"},
+{id:11,content:"tweeet ty bty fity 10" }];
 
 
 const tweetArray=tweetData.map(t=>{
