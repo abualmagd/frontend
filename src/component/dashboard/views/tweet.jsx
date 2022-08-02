@@ -111,14 +111,12 @@ document.getElementById('dashBoard').addEventListener("click",(event)=>{
                 nodeRef={nodeRef}> 
                 <div>  
                            <div className="replay-custom-card"  >
-                        
-                        
-                        <textarea type="text" ref={inputRef} className="input-reply" id="#reply-input" maxLength={280} rows={4}  defaultValue={props.tweet.content}>
+                        <textarea type="text" ref={inputRef} className="input-reply" id="#reply-input" maxLength={280} rows={4}  defaultValue={props.tweet.content/**tweet.url */}>
                         </textarea>
                         <div className="alert-actions"> 
                         
                         <div className="discard-button" onClick={closeReplay}>cancel</div>
-                        <div className="send-button" onClick={getData}>send</div>
+                        <div className="send-button" onClick={getData}>retweet</div>
                         </div>
                     </div>
                 </div>
