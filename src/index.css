@@ -225,7 +225,7 @@ z-index: 2000;
 
 .dash-post-alert{
   max-width: 20rem;
-  max-height: 600px;
+  min-width: 400px;
   position: absolute;
   top: 5vh;
   left: 20vw;
@@ -506,8 +506,12 @@ content: '·';
 
 .dash-post-actions{
   display: flex;
+  background-color: #DEDEDE;
   justify-content: space-between;
-   margin:5px 5px ;
+  align-items: center;
+  padding: 5px;
+  border-radius: 10px;
+   margin:5px 0px ;
 }
 
 .dash-post-actions .button{
@@ -517,8 +521,15 @@ content: '·';
   height: 22px;
   color: #DEDEDE;
 }
-
-.dash-post-actions .button:hover{
+.dash-post-actions .button-sechudele{
+  background-color: rgb(83, 83, 159);
+  border-radius: 10px;
+  margin-right: 5px;
+  padding:5px;
+  height: 22px;
+  color: #DEDEDE;
+}
+.dash-post-actions .button:hover,.button-sechudele:hover{
   cursor: pointer;
   background-color: rgb(26, 26, 88);
 }
@@ -532,10 +543,33 @@ content: '·';
 }
 .dash-post-actions .photo-button:hover{
   cursor: pointer;
-  background-color: #dfdbdb;
+  background-color: #6d6c6c;
+}
+.dash-post-actions input{
+  display: none;
+}
+
+.dash-post-side{
+  display: flex;
+  position: relative;
+  width: 100%;
 }
 
 
+
+.dash-post-div-media{
+  display:flex;
+  flex-direction: column;
+  gap:20px;
+  flex-wrap: wrap;
+  position: absolute;
+  top: 100px;
+  right: 20px;
+}
+.image-div img{
+  width: 100px;
+  height: 100px;
+}
 
 
 
