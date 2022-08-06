@@ -1,25 +1,68 @@
 import React, { useState } from "react";
 import { BsImage } from "react-icons/bs"
 export default function Post(props) {
-    const [selectedImages, setImages] = useState([]);
-
-    const addImage = (event) => {
-        if (selectedImages.length < 7)
-       var images=event.target.files;
-       event.preventDefault();
-       
-          var newElement=URL.createObjectURL(images[0]);
-                     console.log(URL.createObjectURL(images[0]));
-         setImages(selectedImages=>[...selectedImages,[newElement]]);
-
-         console.log(selectedImages.length,newElement);
+    const tweet={
+        content:"new tweet",
+        image:"",
+        video:""
     }
 
-    const displayImages = selectedImages.map((img,index) => {
+    const [focusedInput, setFocusIndex] = useState(0);
+    const [listOfTweets,setTweets]=useState([tweet]);
+
+    const addTweet=()=>{
+        setTweets(listOfTweets=>[...listOfTweets,[tweet]]);
+    }
+        
+    const addImage = (event) => {
+       var images=event.target.files;
+       event.preventDefault();       
+          var newElement=URL.createObjectURL(images[0]);
+        console.log(URL.createObjectURL(images[0]));
+        const newState = listOfTweets.map((obj,index) => {
+            // 👇️ if index equals index, update  property
+            console.log(focusedInput);
+            console.log(index);
+            if (index ===   focusedInput) {
+                console.log("   >>>>> if")
+              return {...obj, image: newElement};
+            }
+      
+            // 👇️ otherwise return object as is
+            return obj;
+          });
+      
+          setTweets(newState);
+    }
+
+
+
+    const onChanged=(index,e)=>{
+        const newState = listOfTweets.map((obj,indx) => {
+            // 👇️ if index equals indx, update  property
+            const value=e.target.value;
+        
+            if (indx === index) {
+              return {...obj, content: value};
+            }
+      
+            // 👇️ otherwise return object as is
+            return obj;
+          });
+      
+        setTweets(newState);
+        console.log('^^^^^^^^^^^^^^')
+        console.log("content : "+listOfTweets[index].content)
+       
+    
+    }
+
+    const displayArea = listOfTweets.map((tweet,indx) => {
+        
         return (
-            <div className="image-div" key={index}>
-            
-            <img src={img} alt="not found" />
+            <div className="new-tweet-div" key={indx}>
+            <textarea className="new-tweet-text-area" onFocus={ setFocusIndex(indx)} onChange={(e)=>onChanged(indx,e)} defaultValue="new tweet"></textarea>
+            {tweet.image&&<img className="post-image" src={tweet.image} alt="not found" />}
         </div>
         );  
     });
@@ -41,16 +84,9 @@ export default function Post(props) {
                         </option>
                     </select>
                 </div>
-                  <div className="dash-post-div-media">
-                {displayImages}
-                </div>
-                <textarea name="postTextARea" className="dash-post-text"
-                    id="postTextARea" required placeholder="What do you have in your mind?" cols="10" rows="100">
-                 </textarea>
-                 
-
-                
-             
+                <div className="dash-post-area">
+                    {displayArea}
+                 </div>
                 
                 <div className="dash-post-actions">
                     <label htmlFor="fileUp">
@@ -59,6 +95,7 @@ export default function Post(props) {
                         </div>
                     </label>
                     <input type="file" name="myImage" id="fileUp" onChange={(e) =>{ addImage(e)}} />
+                    <div onClick={addTweet}>+</div>
                     <div style={{ display: 'flex' }}>
                         <div className="button-sechudele">Schedule</div>
                         <div className="button">Post</div>

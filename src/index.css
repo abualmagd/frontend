@@ -492,16 +492,14 @@ content: '·';
   background-color: rgb(246, 241, 241);
 }
 
-.dash-post-text{
+.dash-post-area{
   margin-top: 10px;
   resize: none;
-  height: 60vh;
+  height: 75vh;
   border-radius: 5px;
-  outline: none;
-  padding: 10px;
   border:2px solid #DEDEDE;
   background-color: rgba(255, 255, 255, 0.486);
-  font-size: larger;
+  overflow-y: scroll;
 }
 
 .dash-post-actions{
@@ -549,29 +547,16 @@ content: '·';
   display: none;
 }
 
-.dash-post-side{
-  display: flex;
-  position: relative;
-  width: 100%;
+.post-image{
+  width: 50px;
+  height: 50px;
 }
 
-
-
-.dash-post-div-media{
-  display:flex;
-  flex-direction: column;
-  gap:20px;
-  flex-wrap: wrap;
-  position: absolute;
-  top: 100px;
-  right: 20px;
+.new-tweet-text-area{
+  outline: none;
+  padding: 10px;
+  font-size: larger;
 }
-.image-div img{
-  width: 100px;
-  height: 100px;
-}
-
-
 
 
 
