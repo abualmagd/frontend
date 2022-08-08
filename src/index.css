@@ -17,6 +17,7 @@ code {
   --color-hover:#6d6c6c;
   --color-border-grey:#DEDEDE;
   --color-background:#333335;
+  --color-active:#53539f;
 }
 
 .dashBoard{
@@ -116,7 +117,7 @@ z-index: 2000;
   cursor: pointer;
 }
 .nav-item-active{
-  background-color: rgb(83, 83, 159);
+  background-color:var(--color-active);
   display: flex;
   border-radius: 10px;
   justify-content:flex-start;
@@ -458,7 +459,7 @@ content: '·';
 }
 
 .send-button{
-  background-color: rgb(135, 41, 228);
+  background-color: var(--color-active);
   padding:5px 18px;
   border-radius: 5px;
   color: #DEDEDE;
@@ -511,7 +512,7 @@ content: '·';
 .dash-post-actions{
   display: flex;
   background-color: #DEDEDE;
-  justify-content: space-between;
+  justify-content:space-between;
   align-items: center;
   padding: 5px;
   border-radius: 10px;
@@ -519,14 +520,14 @@ content: '·';
 }
 
 .dash-post-actions .button{
-  background-color: rgb(83, 83, 159);
+  background-color: var(--color-active);
   border-radius: 10px;
   padding:5px 25px ;
   height: 22px;
   color: #DEDEDE;
 }
 .dash-post-actions .button-sechudele{
-  background-color: rgb(83, 83, 159);
+  background-color: var(--color-active);
   border-radius: 10px;
   margin-right: 5px;
   padding:5px;
@@ -544,25 +545,65 @@ content: '·';
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  color:#edebeb;
+  background-color: var(--color-hover);
 }
-.dash-post-actions .photo-button:hover{
+.dash-post-actions .photo-button:hover,.dash-post-actions .add-button:hover{
   cursor: pointer;
-  background-color: #6d6c6c;
+  background-color:var(--color-active);
+  
 }
 .dash-post-actions input{
   display: none;
 }
+.dash-post-actions .add-button{
+  background-color:var(--color-hover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -150px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  color:#edebeb;
+}
 
+.image-container{
+  width: 100px;
+  height: 100px;
+  border-radius: 15px;
+ align-self: flex-end; 
+ position: relative;
+}
 .post-image{
   width: 100px;
   height: 100px;
   border-radius: 15px;
+
+}
+.delete-image{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: #333335;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  color: var(--color-border-grey);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  border-radius: 50%;
+  transform: rotate(45deg);
+}
+.delete-image:hover{
+  cursor: pointer;
 }
 .new-tweet-div{
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
-  justify-content: flex-end;
   padding-bottom: 5px;
 }
 .new-tweet-divider{

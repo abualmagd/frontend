@@ -1,25 +1,33 @@
 import React, { useState } from "react";
-import { BsImage } from "react-icons/bs"
+import { BsImage ,BsPlus} from "react-icons/bs"
 export default function Post(props) {
-    const tweet = {
+
+
+    const [focusedInput, setFocusIndex] = useState(0);
+    const [listOfTweets, setTweets] = useState([{
         content: "new tweet",
         image: "",
         video: ""
-    }
-
-    const [focusedInput, setFocusIndex] = useState(0);
-    const [listOfTweets, setTweets] = useState([tweet]);
+    }]);
 
 
     const addTweet = () => {
-        setTweets(listOfTweets => [...listOfTweets, [tweet]]);
+        setTweets(listOfTweets => [...listOfTweets, [{
+            content: "new tweet",
+            image: "",
+            video: ""
+        }]]);
     }
 
+  
     const addImage = (event) => {
-        var images = event.target.files;
+ 
+        var image=null;
+        image = event.target.files[0];
+      
         event.preventDefault();
-        var newElement = URL.createObjectURL(images[0]);
-        console.log(URL.createObjectURL(images[0]));
+        var newElement = URL.createObjectURL(image);
+       
         const newState = listOfTweets.map((obj, index) => {
             // 👇️ if index equals index, update  property
             console.log(focusedInput);
@@ -71,8 +79,12 @@ export default function Post(props) {
            
                 <div className="new-tweet-div" key={indx} style={{opacity:opacity}} >
                     <div className="new-tweet-divider"></div>
-                    <textarea className="new-tweet-text-area" onFocus={() => setFocusIndex(indx)} onChange={(e) => onChanged(indx, e)} defaultValue="new tweet"></textarea>
-                    {tweet.image && <img className="post-image" src={tweet.image} alt="not found" />}
+                    <textarea className="new-tweet-text-area"  onFocus={() => setFocusIndex(indx)} onChange={(e) => onChanged(indx, e)}
+                     placeholder="new tweet"  autoFocus></textarea>
+                    {tweet.image &&<div className="image-container">
+                    <img className="post-image" src={tweet.image} alt="not found" />
+                    <div className="delete-image"><BsPlus/></div>
+                    </div> }
                 </div>
           
 
@@ -101,13 +113,13 @@ export default function Post(props) {
                 </div>
 
                 <div className="dash-post-actions">
-                    <label htmlFor="fileUp">
+                    <label htmlFor="fileUp" >
                         <div className="photo-button">
                             <BsImage></BsImage>
                         </div>
                     </label>
-                    <input type="file" name="myImage" id="fileUp" onChange={(e) => { addImage(e) }} />
-                    <div onClick={addTweet}>+</div>
+                    <input type="file" name="myImage" id="fileUp" onChange={(e) => { addImage(e) }} onClick={(e)=>e.target.value=null} />
+                    <div onClick={addTweet} className="add-button"><BsPlus></BsPlus></div>
                     <div style={{ display: 'flex' }}>
                         <div className="button-sechudele">Schedule</div>
                         <div className="button">Post</div>
