@@ -476,6 +476,7 @@ content: '·';
   display: flex;
   flex-direction: column;
   margin-top: 35px;
+  height: 100%;
 }
 .dash-post-alert{
   display: flex;
@@ -498,6 +499,7 @@ content: '·';
   outline: none;
   background-color: rgb(246, 241, 241);
 }
+
 
 .dash-post-area{
   margin-top: 10px;
@@ -604,7 +606,7 @@ content: '·';
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
-  padding-bottom: 5px;
+  overflow-y: hidden;
 }
 .new-tweet-divider{
   padding: 0%;
@@ -629,7 +631,7 @@ content: '·';
 
 @media screen and (max-width:1000px){
  
-  .dash-post{
+  .dashboard-view ,.sidebar ,.wrapper-close,.open-nav-icon-close{
     display: none;
   }
 
@@ -637,6 +639,10 @@ content: '·';
     display: flex;
   }
 
+.dash-post{
+  width: 100vw;
+  max-width:100%;
+}
   .search-query{
     margin-left: 60px;
     margin-top: 35px;
