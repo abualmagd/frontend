@@ -1,14 +1,20 @@
-import React, { useState } from "react";
-import { BsImage ,BsPlus} from "react-icons/bs"
+import React, { useEffect, useRef, useState } from "react";
+import { BsImage, BsPlus } from "react-icons/bs";
+import * as Scroll from "react-scroll";
 export default function Post(props) {
-
-
     const [focusedInput, setFocusIndex] = useState(0);
-    const [listOfTweets, setTweets] = useState([{
+    const [listOfTweets, setTweets] = useState(()=>JSON.parse(localStorage.getItem('underPostTweets'))||[{
         content: "",
         image: "",
         video: ""
     }]);
+
+    const inputRef=useRef([]);
+
+    useEffect(()=>{
+        localStorage.setItem('underPostTweets',JSON.stringify(listOfTweets));
+        
+    },[listOfTweets]);
 
 
     const addTweet = () => {
@@ -18,24 +24,27 @@ export default function Post(props) {
             video: ""
         }]]);
 
-        scroll();
+
     }
 
-  
+    const focus = (index) => {
+        setFocusIndex(index);
+        scroll(index);
+    }
     const addImage = (event) => {
- 
-        var image=null;
+
+        var image = null;
         image = event.target.files[0];
-      
+
         event.preventDefault();
         var newElement = URL.createObjectURL(image);
-       
+
         const newState = listOfTweets.map((obj, index) => {
             // 👇️ if index equals index, update  property
             console.log(focusedInput);
-          
+
             if (index === focusedInput) {
-              
+
                 return { ...obj, image: newElement };
             }
 
@@ -47,30 +56,31 @@ export default function Post(props) {
 
     }
 
-    const removeImage=(index)=>{
-        const newState=listOfTweets.map((obj,indx)=>{
-            if(index===indx){
-                return {...obj,image:''}
+    const removeImage = (index) => {
+        const newState = listOfTweets.map((obj, indx) => {
+            if (index === indx) {
+                return { ...obj, image: '' }
             }
 
             return obj;
-        }) ;
-        
-        
+        });
+
+
         setTweets(newState);
     }
 
-const scroll= () => {
-  const targets = document.querySelectorAll('.new-tweet-div');
-  //scroll to top
-  //targets.scrollTo((0,1000))
-};
 
+var myScroll=Scroll.animateScroll;
+    const scroll = (index) => {
+        myScroll.scrollTo(100,{
+            containerId:'post'
+        })
+    };
 
 
 
     const onChanged = (index, e) => {
-       
+
         const newState = listOfTweets.map((obj, indx) => {
             // 👇️ if index equals indx, update  property
             const value = e.target.value;
@@ -88,35 +98,81 @@ const scroll= () => {
         setTweets(newState);
     }
 
-    const postDirectly=()=>{
+    const postDirectly = () => {
         ///call api
         console.log(listOfTweets);
     }
-  
-  
+
+    const clear=()=>{
+    
+        setTweets([{
+            content: "",
+            image: "",
+            video: ""
+        }]);
+
+    }
+    const clearInput=(index)=>{
+        if(inputRef.current[index].value !==""){
+         inputRef.current[index].focus();
+        inputRef.current[index].value=""; 
+        const arr= listOfTweets.map((t,i)=>{
+            if(index===i) {
+                return { ...t, content: "" };
+            }
+
+
+            return t;
+        }
+           
+        );
+        setTweets(arr);  
+        }else{
+            if(index!==0){
+              var arr= listOfTweets.filter(t=>t!==listOfTweets[index]);
+            setTweets(arr);   
+            }
+          return null;
+        }
+    
+    }
 
     const displayArea = listOfTweets.map((tweet, indx) => {
-                let opacity=focusedInput===indx?"1":".25";
+        let opacity = focusedInput === indx ? "1" : ".25";
+        let noShow= (indx===0&&tweet.content==="")?false : true;
         return (
            
-                <div className="new-tweet-div" id="tweetDiv" key={indx} style={{opacity:opacity}} >
-                    <div className="new-tweet-divider"></div>
-                    <textarea className="new-tweet-text-area"  onFocus={() => setFocusIndex(indx)} onChange={(e) => onChanged(indx, e)}
-                     placeholder="new tweet"  autoFocus></textarea>
-                    {tweet.image &&<div className="image-container">
-                    <img className="post-image" src={tweet.image} alt="not found" />
-                    <div className="delete-image" onClick={()=>removeImage(indx)}><BsPlus/></div>
-                    </div> }
+                          <div className="new-tweet-div" id={"id" + indx} key={indx} style={{ opacity: opacity }} >
+                {indx > 0 && <div className="new-tweet-divider"></div>}
+                <div  className="area-container">
+                   <textarea className="new-tweet-text-area" value={tweet.content} ref={el=>inputRef.current[indx]=el} onFocus={() => focus(indx)} onChange={(e) => onChanged(indx, e)}
+                    placeholder="new tweet" autoFocus></textarea>
+                   {  noShow&&<div className="clear-one-input" onClick={()=>clearInput(indx)} >
+                        <BsPlus/>
+                    </div>}
                 </div>
-           
+                
+                {tweet.image && <div className="image-container">
+                    <img className="post-image" src={tweet.image} alt="not found" />
+                    <div className="delete-image" onClick={() => removeImage(indx)}><BsPlus /></div>
+                </div>}
+                
+            </div>
+
+            
+      
+
 
         );
     });
 
+ 
+
     return (
+
         <div>
-            <div className={props.className} id="post">
-                <div />
+            <div className={props.className} id="post" >
+
                 <div className="dash-post-header">
                     <select className="dash-post-select" name="defaultAccount" id="#chosenAccount">
                         <option value="account.id">
@@ -140,11 +196,12 @@ const scroll= () => {
                             <BsImage></BsImage>
                         </div>
                     </label>
-                    <input type="file" name="myImage" id="fileUp" onChange={(e) => { addImage(e) }} onClick={(e)=>e.target.value=null} />
+                    <input type="file" name="myImage" id="fileUp" onChange={(e) => { addImage(e) }} onClick={(e) => e.target.value = null} />
                     <div onClick={addTweet} className="add-button"><BsPlus></BsPlus></div>
+                    <div onClick={() =>clear()} className="clear-button"><BsPlus></BsPlus></div>
                     <div style={{ display: 'flex' }}>
                         <div className="button-sechudele">Schedule</div>
-                        <div className="button" onClick={()=>postDirectly()}>Post</div>
+                        <div className="button" onClick={() => postDirectly()}>Post</div>
                     </div>
 
                 </div>
