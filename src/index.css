@@ -18,6 +18,8 @@ code {
   --color-border-grey:#DEDEDE;
   --color-background:#333335;
   --color-active:#53539f;
+  --white-background:#faebd7;
+  --glow-color:#3884E3;
 }
 
 .dashBoard{
@@ -348,6 +350,9 @@ z-index: 2000;
 
 }
 
+.tweet-content:hover{
+  cursor: pointer;
+}
 .tweet-body{
   margin: 7px;
   

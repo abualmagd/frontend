@@ -1,10 +1,12 @@
-import DashBoard from "./component/dashboard/dashboard";
+
+import Login from "./component/login/loginPage";
 
 
 function App() {
   return (
     <div className="App">
-      <DashBoard/>
+     { /*<DashBoard/>*/}
+     <Login/>
     </div>
   );
 }

@@ -137,6 +137,7 @@ var myScroll=Scroll.animateScroll;
     
     }
 
+
     const displayArea = listOfTweets.map((tweet, indx) => {
         let opacity = focusedInput === indx ? "1" : ".25";
         let noShow= (indx===0&&tweet.content==="")?false : true;

@@ -1,13 +1,15 @@
 import React,{ useEffect, useState } from "react";
 import { AiOutlineComment, AiOutlineRetweet, AiOutlineHeart } from "react-icons/ai";
 import { CSSTransition } from 'react-transition-group';
+
 //import Modal from "react-modal";
 export default function Tweet(props) {
- 
+ //Todo:creat your own tooltip 
     const nodeRef = React.useRef(null);
     const inputRef=React.useRef(null);
     const [replayAlert, showReplayAlert] = useState(false);
     const [retweetAlert, showRetweetAlert] = useState(false);
+    
     function replay() {
         showReplayAlert(!replayAlert);
     }
@@ -22,6 +24,11 @@ export default function Tweet(props) {
     }
     function getData(){
         console.log(inputRef.current.value);
+    }
+
+    const copy=(text)=>{
+        navigator.clipboard.writeText(text);
+        console.log(text);
     }
 
 useEffect(()=>{
@@ -50,7 +57,8 @@ document.getElementById('dashBoard').addEventListener("click",(event)=>{
                         <span className="tweet-user-name">@ismail-123</span>
                         <span className="tweet-created-ago"> 19hr</span>
                     </div>
-                    <p className="tweet-content">
+                  
+                    <p className="tweet-content"  data-tip data-for="tweetPara" onClick={()=>copy(props.tweet.content)}>
                         Lorem ipsum dolor sit amet, consectetur
                         adipisicing elit. Vero sapiente, tempora expedita
                         obcaecati illum dolorum ipsum, quia aut doloribus labore,
