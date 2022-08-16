@@ -5,7 +5,7 @@ export default function Login() {
         <div className={loginStyle.login_page}>
             <div className={loginStyle.shadow}>
                 <div className={loginStyle.colored_section}>
-                    <img className={loginStyle.img} src="../assets/cont.jpg" alt="welcome back" />
+                    <img className={loginStyle.img} src="../assets/contt.jpg" alt="welcome back" />
                 </div>
                 <div className={loginStyle.login_section}>
                     <h4 className={loginStyle.title}>Login Account</h4>

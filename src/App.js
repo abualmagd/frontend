@@ -1,12 +1,15 @@
 
-import Login from "./component/login/loginPage";
+//import Login from "./component/login/loginPage";
+//import Register from "./component/register/register";
+
+import About from "./component/about/aboutHome";
 
 
 function App() {
   return (
     <div className="App">
-     { /*<DashBoard/>*/}
-     <Login/>
+     { /*<DashBoard/><Login/>   <Register/>*/}
+    <About />
     </div>
   );
 }
