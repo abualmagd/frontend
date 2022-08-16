@@ -2,9 +2,11 @@
 
 
 .about{
-    height: 100vw;
+    height: 100vh;
     padding: 0px 10rem;
+    margin: auto;
     font-family: 'Fira Sans', 'Droid Sans', 'Helvetica Neue';
+     padding-left: 20px;
 }
 
 .header{
@@ -73,19 +75,34 @@
 
 .main{
     display: flex;
-    width: 50%;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 60px;
+    width: 100%;
+   
 }
 
+
+.main_left{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+}
 .content{
     font-size: 4rem;
     font-weight: 800;
+    margin: 0;
 }
 
 .save{
     font-weight: 400;
-    font-size: 1.7rem;
+    font-size: 1.4rem;
 }
 
+.main_img{
+display: flex;    
+}
 
 
 
@@ -97,4 +114,9 @@
     .logo_name{
         display: none;
     }
+
+    .main_img{
+    display: none;
+    }
+    
 }
