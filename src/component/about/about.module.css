@@ -4,9 +4,10 @@
 .about{
     height: 100vh;
     padding: 0px 10rem;
+    width: 80%;
     margin: auto;
     font-family: 'Fira Sans', 'Droid Sans', 'Helvetica Neue';
-     padding-left: 20px;
+    
 }
 
 .header{
@@ -23,10 +24,17 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+
 }
-.logo_icon{
-   padding-right: 5px;
+.logo_name{
+    font-size: 1.7rem;
+    font-family: "Leckerli One";
+    color:#FCFCFC;
+    text-shadow: 2px 0px 0px #E25283;
+    -webkit-text-stroke-width: .5px;
+    -webkit-text-stroke-color: #201564;
 }
+
 
 .links{
     display: flex;
