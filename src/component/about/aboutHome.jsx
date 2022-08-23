@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./about.module.css";
+import Feature from "./feature";
 import Header from "./header";
 import Main from "./main";
 
@@ -8,6 +9,7 @@ export default function About(){
         <div className={styles.about}>
             <Header />
             <Main/>
+            <Feature />
         </div>
 
     );

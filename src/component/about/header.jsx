@@ -7,6 +7,7 @@ export default function Header(){
     return (
         <div className={styles.header}>
             <div className={styles.logo}>
+            <img className={styles.image} src="../assets/ool.png" alt="#" />
             <AnimatedText
   type="chars" // animate words or chars
   animation={{

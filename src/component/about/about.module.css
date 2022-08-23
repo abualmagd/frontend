@@ -26,15 +26,22 @@
     cursor: pointer;
 
 }
+
+.image{
+    height: 25px;
+    width: 25px;
+    margin-right: 8px;
+}
 .logo_name{
     font-size: 1.7rem;
     font-family: "Leckerli One";
-    color:#FCFCFC;
-    text-shadow: 2px 0px 0px #E25283;
-    -webkit-text-stroke-width: .5px;
-    -webkit-text-stroke-color: #201564;
+    color: #201564;
 }
 
+/*color:#FCFCFC;
+text-shadow: 2px 0px 0px #E25283;
+-webkit-text-stroke-width: 1.5px;
+-webkit-text-stroke-color: #201564;*/
 
 .links{
     display: flex;
@@ -111,10 +118,29 @@
 .main_img{
 display: flex;    
 }
+/*feature section*/
 
+.feature{
+    height: 700px;
+    width: 100%;
+    background-color: #22B14C;
+    padding: 16px;
+}
 
-
-
+.features_list{
+    display: flex;
+    margin-top: 60px;
+    justify-content: space-between;
+}
+.card{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.card_image{
+    width: 150px;
+    height: 150px;
+}
 @media screen and (max-width:1000px) {
     .about{
         padding: 0;
