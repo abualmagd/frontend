@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./about.module.css";
+import Contact from "./contact";
 import Feature from "./feature";
 import Header from "./header";
 import Main from "./main";
@@ -10,6 +11,7 @@ export default function About(){
             <Header />
             <Main/>
             <Feature />
+            <Contact />
         </div>
 
     );

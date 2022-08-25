@@ -7,10 +7,13 @@
     width: 80%;
     margin: auto;
     font-family: 'Fira Sans', 'Droid Sans', 'Helvetica Neue';
-    
+    position: relative;
 }
 
 .header{
+    position:sticky;
+    top: 0;
+    background-color: #ffffff;
     margin-top: 1.5rem;
     display: flex;
     width: 100%;
@@ -121,25 +124,39 @@ display: flex;
 /*feature section*/
 
 .feature{
-    height: 700px;
-    width: 100%;
-    background-color: #22B14C;
-    padding: 16px;
+   padding: 20px;
+    margin-top: 150px;
+    padding: 1px -350px;
+    background-color:#004c3f;
+    color: #f8fbf5;
 }
 
+.feature_title{
+    font-size: 2rem;
+}
 .features_list{
     display: flex;
     margin-top: 60px;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 .card{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+    width: 400px;
+    padding-bottom: 40px;
 }
-.card_image{
-    width: 150px;
-    height: 150px;
+.card_icon{
+   font-size: 2rem;
+}
+
+.card_h1{
+    font-size: 1.5rem;
+    padding-bottom: 1px;
+    text-transform: capitalize;
+}
+
+.card_h2{
+    font-size: 1rem;
+    font-weight: 200;
 }
 @media screen and (max-width:1000px) {
     .about{

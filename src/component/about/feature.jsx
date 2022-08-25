@@ -1,26 +1,50 @@
 import React from "react";
 import styles from"./about.module.css";
+import {BsCalendar2Date , BsBarChart ,BsBinoculars ,BsPeople}   from "react-icons/bs";
+
 export default function Feature(){
 
     return(
         <section className={styles.feature}>
-            <h3>Power your social team with </h3>
+            <h1 className={styles.feature_title}>Power your social team with </h1>
             <div className={styles.features_list}>
                 <div  className={styles.card}>
-                    <img className={styles.card_image} src="../assets/ool.png" alt="##" />
-                    <p> schedule tweet posting </p>
+                    <BsCalendar2Date className={styles.card_icon} />
+                    <h1 className={styles.card_h1}>schedule posts easily</h1>
+                    <h2 className={styles.card_h2}>
+                    post your words in
+                         the best time to get high engagement 
+                    </h2>
                 </div>
+
+
                 <div  className={styles.card}>
-                    <img src="" alt="##" />
-                    <p> making  thread easly </p>
+                    <BsBarChart className={styles.card_icon} />
+                    <h1 className={styles.card_h1}>engage with viral posts</h1>
+                    <h2 className={styles.card_h2}>
+                    the best way to get more followers is to engage 
+                    with the viral posts 
+                    </h2>
                 </div>
+
+
                 <div  className={styles.card}>
-                    <img src="" alt="##" />
-                    <p> search for key words </p>
+                    <BsBinoculars className={styles.card_icon} />
+                    <h1 className={styles.card_h1}>Building Engagement with Keyword Awareness </h1>
+                    <h2 className={styles.card_h2}>
+                    Keyword awareness is a valuable strategy for marketers interested in boosting engagement 
+
+                    </h2>
                 </div>
+
                 <div  className={styles.card}>
-                    <img src="" alt="##" />
-                    <p> engage with viral posts </p>
+                    <BsPeople className={styles.card_icon} />
+                    <h1 className={styles.card_h1}>Build Collaborative Workspaces </h1>
+                    <h2 className={styles.card_h2}>
+                    Workspace Essentials Starter was built for businesses.
+                    Discover how our collaboration platform  can help your social team stay connected
+
+                    </h2>
                 </div>
             </div>
         </section>
