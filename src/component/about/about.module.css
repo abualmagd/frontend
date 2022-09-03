@@ -4,10 +4,10 @@
 .about{
     height: 100vh;
     padding: 0px 10rem;
-    width: 80%;
     margin: auto;
     font-family: 'Fira Sans', 'Droid Sans', 'Helvetica Neue';
     position: relative;
+
 }
 
 .header{
@@ -158,6 +158,41 @@ display: flex;
     font-size: 1rem;
     font-weight: 200;
 }
+
+.footer{
+   display: flex;
+   margin-top:30px;
+    background-color: #004c3f;
+    height: 50px;
+    align-items: center;
+    padding-left:20px;
+    color: #f8fbf5;
+}
+
+.footer_icon {
+    padding-right: 40px;
+    cursor: pointer;
+}
+
+.more_feature{
+    display: flex;
+    margin: 50px 0px;
+}
+.video{
+    outline: none;
+
+}
+.dash_div{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: auto;
+    width: 300px;
+}
+.dash_div_h1{
+ font-weight:800;
+}
+
 @media screen and (max-width:1000px) {
     .about{
         padding: 0;
