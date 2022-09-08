@@ -1,39 +1,35 @@
 import React from "react";
 import styles from "./about.module.css";
-import AnimatedText from 'react-animated-text-content';
+//import AnimatedText from 'react-animated-text-content';
+import { Link } from "react-router-dom";
 
 export default function Header(){
+
+const scrollTo=(id)=>{
+
+    const anchor = document.getElementById(id)
+    console.log(anchor)
+    anchor.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+}
+
+
 
     return (
         <div className={styles.header}>
             <div className={styles.logo}>
             <img className={styles.image} src="../assets/ool.png" alt="#" />
-            <AnimatedText
-  type="chars" // animate words or chars
-  animation={{
-    x: '200px',
-    y: '-20px',
-    scale: 1.1,
-    ease: 'ease-in-out',
-  }}
-  animationType="diagonal" //float diagonal   lights  rifle
-  interval={0.06}
-  duration={0.8}
-  tag="p"
-  className={styles.logo_name}
-  includeWhiteSpaces
-  threshold={0.1}
-  rootMargin="20%"
+            <h1
 >
 Flowfed
-</AnimatedText>
+</h1>
                        
             </div>
             <div className={styles.links}>
-                <a href="/#" className={styles.link}>Price</a>
-                <a href="/#" className={styles.link}>Learn</a>
-                <a href="/#" className={styles.link}>Log in</a>
-                <a href="/#" className={styles.link_free}>Start free</a>
+                <div href="/#" className={styles.link}>Price</div>
+                <div href="/#"   onClick={() => {scrollTo("#review")}} className={styles.link}>Review</div>
+                <Link to={'/login'} className={styles.link}>Log in</Link>
+                <Link to={'/register'} className={styles.link_free}>Start free</Link>
             </div>
         </div>
     );

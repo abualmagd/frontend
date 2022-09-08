@@ -1,15 +1,23 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect } from "react";
 import SideBare from "./sideBare";
 import View from "./view";
 import Post from "./views/post";
-
+import { useNavigate } from "react-router-dom";
 
 export default function DashBoard() {
     const [index, setIndex] = useState(0);
     const changeIndex = (event, index) => {
         setIndex(index);
     }
+    let navigate = useNavigate();
 
+   /* useEffect(() => {
+        //load user 
+        const token = localStorage.getItem('token');
+        if(!token) {
+          navigate('/login');
+        }
+      });*/
 
     return (
         <div className="dashBoard" id="dashBoard">

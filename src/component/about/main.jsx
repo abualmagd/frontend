@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./about.module.css";
-
+import { Link } from "react-router-dom";
 
 export default function Main() {
     const styl={
@@ -17,7 +17,7 @@ export default function Main() {
                   </p>
                 <p className={styles.save}>save time and effort in 
                  manage your twitter accounts </p>
-                <a className={styles.link_free} style={styl} href="/#">Get started on Flowfed</a>
+                <Link to={'/register'}   className={styles.link_free} style={styl} >Get started on Flowfed</Link>
             </section>
             <section>
                 <img   className={styles.main_img} src="../assets/creative1.png" alt="the power of automation " />

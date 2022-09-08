@@ -3,7 +3,7 @@ import styles from "./about.module.css";
 
 export default function MoreFeature() {
     return (
-        <section className={styles.more_feature}>
+        <section id="#review" className={styles.more_feature}>
             <video className={styles.video} width="50%" autoPlay muted loop>
                 <source src="./assets/screen-shot.webm" />
             </video>

@@ -6,6 +6,7 @@ import Header from "./header";
 import Main from "./main";
 import MoreFeature from "./moreFeature";
 
+
 export default function About(){
     return (
         <div className={styles.about}>

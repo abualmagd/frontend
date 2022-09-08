@@ -3,9 +3,22 @@ import { AiFillAppstore } from "react-icons/ai";
 import { AiOutlineSearch } from "react-icons/ai";
 import { AiOutlineComment, AiOutlineTeam, AiOutlineCalendar} from "react-icons/ai";
 import { BsBookmark, BsGear,BsBoxArrowLeft,BsX,BsList} from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
+import { logOut } from "../../controller/user";
 
 export default function SideBare(props) {
     const [open,setOpen]=useState(true);
+    const navigate=useNavigate()
+
+const loggingOut=()=>{
+    try {
+         logOut(); 
+         navigate('/')
+    } catch (error) {
+        
+    }
+  
+}
 
     const isActive = (index) => {
         if (props.index === index) {

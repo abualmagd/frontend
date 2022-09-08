@@ -66,6 +66,7 @@
 }
 
 .sign_up{
+    text-decoration: none;
     color: var(--color-active);
     align-self: center;
     margin: 0;
@@ -78,6 +79,7 @@
 .login_btn:hover{
     cursor: pointer;
     background-color:var(--glow-color);
+    color: var(--border-grey);
 }
 
 
@@ -94,6 +96,8 @@
     height: 40px;
     width: 70%;
     font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-active);
 }
 
 
