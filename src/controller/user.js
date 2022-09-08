@@ -1,7 +1,7 @@
 import axios from "axios";
 import { access ,userId} from "../component/context/user-data";
 
-  const baseUrl='http://localhost:8080/api/auth';
+  const baseUrl='http://localhost:8080/api';
   let headers = {
     headers: {
       "Content-Type": "application/json"
@@ -15,18 +15,21 @@ import { access ,userId} from "../component/context/user-data";
                 email: eml,
                 password: pass
               };
-   return axios.post(baseUrl+'/login',
+   return axios.post(baseUrl+'/auth/login',
             data,headers
             );
   }
 
   export async  function  logOut(){
-    const auth="Bearer "+access;
-   return axios.post(baseUrl+'/logout',{ params: { id: userId } },
-            null,{
+    const auth=JSON.stringify("Bearer" );
+    let url=baseUrl+"/users/logout?id="+35;
+    console.log('access : ')
+    console.log(access)
+   return axios.post(url,
+            null,{headers:{
               "Content-Type": "application/json",
-              "Authorization":auth
-            }
+              "Authorization":"Bearer ${access}"///TODO:error here 
+            }}
             );
   }
 
@@ -40,7 +43,7 @@ import { access ,userId} from "../component/context/user-data";
 };
 
 console.log(data)
-       return axios.post(baseUrl+'/register',
+       return axios.post(baseUrl+'/auth/register',
             data
             ,headers
             );

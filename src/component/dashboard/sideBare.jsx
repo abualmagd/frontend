@@ -5,19 +5,21 @@ import { AiOutlineComment, AiOutlineTeam, AiOutlineCalendar} from "react-icons/a
 import { BsBookmark, BsGear,BsBoxArrowLeft,BsX,BsList} from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { logOut } from "../../controller/user";
-
+import { ToastContainer ,toast } from "react-toastify";
 export default function SideBare(props) {
     const [open,setOpen]=useState(true);
     const navigate=useNavigate()
 
 const loggingOut=()=>{
-    try {
-         logOut(); 
-         navigate('/')
-    } catch (error) {
-        
-    }
-  
+   
+         logOut().then(
+            function(value){
+               navigate('/')  
+            },
+            function(error){
+                toast.error('sorry, error in logging out ')
+            }
+         ); 
 }
 
     const isActive = (index) => {
@@ -46,7 +48,7 @@ const loggingOut=()=>{
     }
     return (
         <div className={wrap(open)} >
-             
+             <ToastContainer />
         <div  className="sidebar">
             <div id="nav-ul">
 
@@ -120,12 +122,12 @@ const loggingOut=()=>{
                     </div>
                 
                 <div className="log-out-div">
-                          <a className="log-out-a" href="/#">
+                          <div className="log-out-a" onClick={loggingOut}>
                 <div className="log-icon">
                     <BsBoxArrowLeft className="icon-log-out" />
                 </div>
                 LogOut
-            </a>
+            </div>
             </div>
                 
             </div>
