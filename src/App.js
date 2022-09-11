@@ -10,6 +10,8 @@ import {
   Route,
 } from "react-router-dom";
 import NotFound from "./component/error/error";
+import Back from "./component/authorizer/back";
+import TwitterAuthorize from "./component/authorizer/twiter-authorize";
 
 
 function App() {
@@ -20,6 +22,8 @@ function App() {
       <Route path="/login" element={<Login />}/>
       <Route path="/register" element={<Register />}/>
       <Route path="/dashboard" element={<DashBoard />}/>
+      <Route path="/back" element={<Back />}/>
+      <Route path="/autherize" element={<TwitterAuthorize />}/>
       <Route path="*" element={<NotFound />}/>
     </Routes>
     </BrowserRouter> 

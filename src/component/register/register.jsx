@@ -19,7 +19,7 @@ const signUp=()=>{
            navigate('/dashboard')  
         },
         function(error){
-          notify(error.message)
+          notify(error.response.data)
         }
 
      );

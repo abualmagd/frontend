@@ -21,14 +21,13 @@ import { access ,userId} from "../component/context/user-data";
   }
 
   export async  function  logOut(){
-    const auth=JSON.stringify("Bearer" );
-    let url=baseUrl+"/users/logout?id="+35;
+    let url=baseUrl+"/users/logout?id="+userId;
     console.log('access : ')
     console.log(access)
    return axios.post(url,
             null,{headers:{
               "Content-Type": "application/json",
-              "Authorization":"Bearer ${access}"///TODO:error here 
+              "Authorization":`Bearer ${access}` ///TODO:error here 
             }}
             );
   }
@@ -50,3 +49,17 @@ console.log(data)
          
            }
 
+
+           export async  function  getOuth(){
+            let url=baseUrl+"/twitter/k";
+           return axios.get(url,
+                    null,{headers:{
+                      "Content-Type": "application/json",
+                      "Authorization":`Bearer ${access}` ///TODO:error here 
+                    }}
+                    );
+          }
+
+          export async function RequestVerifier(outh){
+            window.open(`https://api.twitter.com/oauth/authorize?oauth_token=${outh}`, '_blank');
+          }

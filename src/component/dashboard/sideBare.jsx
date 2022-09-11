@@ -62,7 +62,7 @@ const loggingOut=()=>{
                 </div>
                     <div
                         className={isActive(0)} onClick={() => props.changeNavIndex(Event, 0)}>
-                        <a className="nav-item-a" href="/#">
+                        <a className="nav-item-a" href="/#" onClick={(event)=> event.preventDefault()}>
                             <div className="icon">
                                 <AiFillAppstore className="icon" />
                             </div>
@@ -70,7 +70,7 @@ const loggingOut=()=>{
                         </a>
                     </div>
                     <div className={isActive(1)} onClick={() => props.changeNavIndex(Event, 1)}>
-                        <a className="nav-item-a" href="/#">
+                        <a className="nav-item-a" href="/#" onClick={(event)=> event.preventDefault()}>
                             <div className="icon">
                                 <AiOutlineSearch className="icon" />
                             </div>
@@ -79,7 +79,7 @@ const loggingOut=()=>{
                     </div>
 
                     <div className={isActive(2)} onClick={() => props.changeNavIndex(Event, 2)}>
-                        <a className="nav-item-a" href="/#">
+                        <a className="nav-item-a" href="/#" onClick={(event)=> event.preventDefault()}>
                             <div className="icon">
                                 <AiOutlineComment className="icon" />
                             </div>
@@ -87,7 +87,7 @@ const loggingOut=()=>{
                         </a>
                     </div>
                     <div className={isActive(3)} onClick={() => props.changeNavIndex(Event, 3)}>
-                        <a className="nav-item-a" href="/#">
+                        <a className="nav-item-a" href="/" onClick={(event)=> event.preventDefault()}>
                             <div className="icon">
                                 <AiOutlineTeam className="icon" />
                             </div>
@@ -95,15 +95,15 @@ const loggingOut=()=>{
                         </a>
                     </div>
                     <div className={isActive(4)} onClick={() => props.changeNavIndex(Event, 4)}>
-                        <a className="nav-item-a" href="/#">
+                        <a className="nav-item-a" href="/#" onClick={(event)=> event.preventDefault()}>
                             <div className="icon">
                                 <AiOutlineCalendar className="icon" />
                             </div>
                             Calender
                         </a>
                     </div>
-                   <div className={isActive(5)} onClick={() => props.changeNavIndex(Event, 5)}>
-                        <a className="nav-item-a" href="/#">
+                   <div className={isActive(5)} onClick={() => props.changeNavIndex(Event, 5)} >
+                        <a className="nav-item-a" href="/#" onClick={(event)=> event.preventDefault()}>
                             <div className="icon">
                                 <BsBookmark className="icon" />
                             </div>
@@ -113,7 +113,7 @@ const loggingOut=()=>{
                 
                 
                     <div className={isActive(6)} onClick={() => props.changeNavIndex(Event, 6)}>
-                        <a className="nav-item-a" href="/#">
+                        <a className="nav-item-a" href="/#" onClick={(event)=> event.preventDefault()}>
                             <div className="icon">
                                 <BsGear className="icon" />
                             </div>
