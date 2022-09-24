@@ -13,10 +13,10 @@ export default function Register() {
     let navigate = useNavigate();
     const notify = (m) => toast.error(m);
 const signUp=()=>{
-   
+        notify("Registering ...")
      register({eml:email.current.value,nm:name.current.value,pass:password.current.value}).then(
         function(value){
-           navigate('/dashboard')  
+           navigate('/login')  
         },
         function(error){
           notify(error.response.data)

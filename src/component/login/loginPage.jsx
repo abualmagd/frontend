@@ -6,7 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRef } from "react";
 import { login } from "../../controller/user";
-import { updateAccess,access ,setUserId} from "../context/user-data";
+import { setUserId} from "../context/user-data";
 
 export default function Login() {
     let email=useRef('');
@@ -15,15 +15,14 @@ export default function Login() {
     const notify = (m) => toast.error(m);
   
 const sign=()=>{
-   
+    notify("Logging .. ")
      login({eml:email.current.value,pass:password.current.value}).then(
         function(value){
             console.log(value.data.refreshToken)
            localStorage.setItem('refresh',JSON.stringify(value.data.refreshToken))
-           updateAccess(value.data.accessToken);
+           localStorage.setItem('secrets',JSON.stringify(value.data.accessToken));
+
            setUserId(value.data.id)
-           console.log("access : ")
-           console.log(access)
             console.log("data : ")
             console.log(value.data)
            navigate('/dashboard')  
