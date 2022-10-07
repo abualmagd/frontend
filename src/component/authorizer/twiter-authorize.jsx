@@ -1,5 +1,5 @@
 import React from "react";
-import {  getAouthRequest ,RequestVerifier } from "../../controller/user";
+import {  getAouthRequest ,RequestVerifier } from "../../controller/userController";
 import { ToastContainer,toast } from "react-toastify";
 import styles from "./authorize.module.css"
 

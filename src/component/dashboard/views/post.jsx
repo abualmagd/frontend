@@ -1,19 +1,24 @@
 import React, { useEffect, useRef, useState } from "react";
 import { BsImage, BsPlus } from "react-icons/bs";
 import * as Scroll from "react-scroll";
+import { postTweet } from "../../../controller/tweetController";
+import { ToastContainer,toast } from "react-toastify";
 export default function Post(props) {
     const [focusedInput, setFocusIndex] = useState(0);
+   
     const [listOfTweets, setTweets] = useState(()=>JSON.parse(localStorage.getItem('underPostTweets'))||[{
         content: "",
         image: "",
         video: ""
     }]);
 
+    const notify=()=>toast.error("sorry somthing error");
+    const notifyOk=()=>toast.done("your tweet posted succesfully");
     const inputRef=useRef([]);
 
     useEffect(()=>{
         localStorage.setItem('underPostTweets',JSON.stringify(listOfTweets));
-        
+     
     },[listOfTweets]);
 
 
@@ -23,7 +28,7 @@ export default function Post(props) {
             image: "",
             video: ""
         }]]);
-
+        setFocusIndex(focusedInput+1)
 
     }
 
@@ -99,8 +104,29 @@ var myScroll=Scroll.animateScroll;
     }
 
     const postDirectly = () => {
-        ///call api
-        console.log(listOfTweets);
+        ///call api to post tweet or threed directly
+        if(listOfTweets.length>0&&listOfTweets.length<2&&listOfTweets[0]["content"]!==''){
+            var e = document.getElementById("#chosenAccount");
+            var index=e.value;
+           // console.log(index)
+           // console.info(props.accounts[index])
+            postTweet(listOfTweets[0]["content"],props.accounts[index]).then(
+                (value)=>{
+                    
+                    
+                    notifyOk();
+                    console.log(value.data);
+                    clear();
+                }
+            ).catch(
+                (error)=>{
+                    console.error(error);
+                    notify();
+                }
+            );
+          console.log(listOfTweets);  
+        }
+        
     }
 
     const clear=()=>{
@@ -131,6 +157,7 @@ var myScroll=Scroll.animateScroll;
             if(index!==0){
               var arr= listOfTweets.filter(t=>t!==listOfTweets[index]);
             setTweets(arr);   
+            setFocusIndex(index-1);
             }
           return null;
         }
@@ -157,34 +184,24 @@ var myScroll=Scroll.animateScroll;
                     <img className="post-image" src={tweet.image} alt="not found" />
                     <div className="delete-image" onClick={() => removeImage(indx)}><BsPlus /></div>
                 </div>}
-                
+               { tweet.content&&<div>{280-tweet.content.length}</div> /*edit here css*/}
             </div>
-
-            
-      
-
-
-        );
+       );
     });
 
- 
+ const options=props.accounts.map((account,index)=>{
+return <option value={index} key={index}>{account["accountName"]}</option>
+ });
 
     return (
 
         <div>
+            
             <div className={props.className} id="post" >
-
+                <ToastContainer/>
                 <div className="dash-post-header">
                     <select className="dash-post-select" name="defaultAccount" id="#chosenAccount">
-                        <option value="account.id">
-                            acconut1.name
-                        </option>
-                        <option value="account.id">
-                            acconut2.name
-                        </option>
-                        <option value="account.id">
-                            acconut3.name
-                        </option>
+                        {options}
                     </select>
                 </div>
                 <div className="dash-post-area">

@@ -1,7 +1,5 @@
 import axios from "axios";
 
-
-
 const baseUrl = 'http://localhost:8080/api';
 let headerz = {
   headers: {
@@ -89,7 +87,7 @@ export async function getAouthRequest() {
   let url = baseUrl + "/twitter/request";
   let str = "Bearer ";
   str +=access;
-  console.log(str)
+ 
   const headers= { headers: {
     "Content-Type": "application/json",
     "Authorization": str  
@@ -112,7 +110,7 @@ export async function RequestVerifier(outh) {
 
 export async function saveNewTwitterAccount({outh,verifier,access}){
   const userId = JSON.parse(localStorage.getItem('userId'));
- // const access =JSON.parse(localStorage.getItem('secrets'));
+ 
   console.log(access);
   let url = baseUrl + `/twitter/tokens?oauthToken=${outh}&verifier=${verifier}&id=${userId}`;
   let str = "Bearer ";
@@ -127,3 +125,21 @@ headers
   );
 }
 
+export  function getCurrentUser(){
+
+  let url=baseUrl+"/users/current";
+  const access =JSON.parse(localStorage.getItem('secrets'));
+  let str = "Bearer ";
+  str +=access;
+ 
+  const headers= { headers: {
+    "Content-Type": "application/json",
+    "Accept":"application/json",
+    "Authorization": str, 
+  }};
+  
+  return  axios.get(url,
+     headers
+  );
+    
+}

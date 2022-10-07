@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./authorize.module.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { saveNewTwitterAccount } from "../../controller/user";
+import { saveNewTwitterAccount } from "../../controller/userController";
 import { ToastContainer,toast  } from "react-toastify";
 export default function Back(){
 
@@ -12,29 +12,42 @@ export default function Back(){
         const notify=(m)=>toast.error(m);
         const navigate=useNavigate();
      
-      useEffect(()=>{
-        const oauth = new URLSearchParams(search).get("oauth_token");
-        const verifier = new URLSearchParams(search).get("oauth_verifier");
-        console.log(oauth);
-        saveNewTwitterAccount({outh:oauth,verifier:verifier,access:access}).then(
-            function(value){
-                console.log(value);
-                let accounts=JSON.parse(localStorage.getItem("accounts"));
-                if(accounts===null){
-                 localStorage.setItem("accounts",JSON.stringify([value.data]));    
-                }else{
-                    accounts.push(value.data);
-                    localStorage.setItem("accounts",accounts);  
-                }
-
-                navigate("idashboard");
-                       },
-            function(error){
-                console.log(error);
-                notify(error.response.data);
-            }
-        );
+        function cutBackUrl(){
+            return new Promise(function(resolve, reject) {
+                  const oauth = new URLSearchParams(search).get("oauth_token");
+        const verifier = new URLSearchParams(search).get("oauth_verifier"); 
         
+        if(oauth!=null){
+            resolve(
+
+            saveNewTwitterAccount({outh:oauth,verifier:verifier,access:access}).then(
+                function(value){
+                    console.log(value.data);
+                    navigate("/dashboard");
+                           },
+                function(error){
+                    console.log(error);
+                    notify(error.response.data);
+                }
+            )
+
+           );
+           
+        }else{
+            reject(
+            console.log('error ')
+        );
+        }
+       
+            });
+        
+        }
+
+
+
+
+      useEffect(()=>{
+    cutBackUrl();
       });
 
     return (

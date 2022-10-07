@@ -1,4 +1,5 @@
 import React from "react";
+import Accounts from "./views/accounts";
 import Home from "./views/home";
 
 
@@ -16,7 +17,7 @@ export default function View(props){
                 return <>Spaces</>
         
             case 3:
-                return <>Accounts</>
+                return <Accounts />
    
             case 4:
                 return <>Calender</>

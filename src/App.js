@@ -23,7 +23,7 @@ function App() {
       <Route path="/register" element={<Register />}/>
       <Route path="/dashboard" element={<DashBoard />}/>
       <Route path="/back" element={<Back />}/>
-      <Route path="/autherize" element={<TwitterAuthorize />}/>
+      <Route path="/authorize" element={<TwitterAuthorize />}/>
       <Route path="*" element={<NotFound />}/>
     </Routes>
     </BrowserRouter> 

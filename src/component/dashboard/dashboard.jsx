@@ -3,38 +3,68 @@ import SideBare from "./sideBare";
 import View from "./view";
 import Post from "./views/post";
 import { useNavigate } from "react-router-dom";
-import { newToken } from "../../controller/user";
+import { newToken } from "../../controller/userController";
 import { ToastContainer,toast } from "react-toastify";
+import { getCurrentUser } from "../../controller/userController";
+
+
 export default function DashBoard() {
     const [index, setIndex] = useState(0);
+    const [userAcc,setUserAcc]=useState(null)
+ 
     const changeIndex = (event, index) => {
         setIndex(index);
     }
     let navigate = useNavigate();
     const notify=()=>toast.error(' please login again')
 
-    useEffect(() => {
-        //load user 
-       // console.log('use effect is run ');
-        newToken().then(
-            function(val){
-                localStorage.setItem('secrets',JSON.stringify(val.data));
-                console.log(val.data);
-            },
-            function(r){
-                notify();
-                
-               navigate('/login');  
+   
+
+const fetchUserAccounts=()=>{
+
+    getCurrentUser().then(
+        (value)=>{
+                console.log(value.data);
+                 localStorage.setItem('current',value.data); 
+               setUserAcc(value.data["managedAcounts"])
             }
+        ).catch(
+            
+            (error)=>{
+                console.log('error : >>>>');
+               console.log(error);
+              }
         );
-        // eslint-disable-next-line
-        },[]);
+} 
+    useEffect(()=> {
+     
+        const fetchRefreshAccess=()=>{
+            newToken().then(
+                (val)=>{
+                    localStorage.setItem('secrets',JSON.stringify(val.data));
+                    console.log(val.data);
+                    
+                }
+            ).catch((r)=>{
+                    notify();    
+                   navigate('/login');  
+                });
+        }
+         fetchRefreshAccess()
+        
+     
+         
+
+       fetchUserAccounts();
+        
+      
+},[navigate]);
 
     return (
-        <div className="dashBoard" id="dashBoard">
+        <div className="dashBoard" id="dashBoard" >
             <SideBare index={index} function changeNavIndex={changeIndex} />
             <View index={index} />
-            <Post className={"dash-post"}/>
+          {userAcc&&<Post accounts={userAcc} className={"dash-post"}/>}
             <ToastContainer />
         </div>
 
@@ -42,41 +72,3 @@ export default function DashBoard() {
     );
 }
 
-/*
-
-  const [postAlert, showPostAlert] = useState(false);
-
-
-
-
-
-    const togglePostAlert = () => {
-        console.log('clicked');
-        showPostAlert(!postAlert);
-    }
-
-    const isActive=(postAlert)=>{
-        if(postAlert){
-            return "dash-post-float-boaton-active";
-        }
-        return "dash-post-float-boaton";
-    }
-
-
-
-
-
-
-
-            <div className={isActive(postAlert)} onClick={togglePostAlert}> + </div>
-            <Modal
-                isOpen={postAlert}
-                ariaHideApp={false}
-                shouldCloseOnEsc={true}
-                className="dash-post-alert"
-                contentLabel="Example Modal">
-                 
-                 <Post  className={"alert-dash-post"}/>
-            </Modal>
-
-*/

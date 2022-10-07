@@ -1,7 +1,7 @@
 import React from "react";
 import loginStyle from "../login/login.module.css";
 import { Link } from "react-router-dom";
-import { register } from "../../controller/user";
+import { register } from "../../controller/userController";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer,toast } from "react-toastify";

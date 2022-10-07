@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRef } from "react";
-import { login } from "../../controller/user";
+import { login } from "../../controller/userController";
 import { setUserId} from "../context/user-data";
 
 export default function Login() {

@@ -4,7 +4,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { AiOutlineComment, AiOutlineTeam, AiOutlineCalendar} from "react-icons/ai";
 import { BsBookmark, BsGear,BsBoxArrowLeft,BsX,BsList} from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
-import { logOut } from "../../controller/user";
+import { logOut } from "../../controller/userController";
 import { ToastContainer ,toast } from "react-toastify";
 export default function SideBare(props) {
     const [open,setOpen]=useState(true);
@@ -52,7 +52,7 @@ const loggingOut=()=>{
         <div  className="sidebar">
             <div id="nav-ul">
 
-                <div className="head-logo">
+                <div className="head-logo" >
                     <h4>FlowFed</h4>
                     <BsX className="close-icon" onClick={handleClick}/>
                    
