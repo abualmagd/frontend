@@ -43,7 +43,9 @@ const fetchUserAccounts=()=>{
                 (val)=>{
                     localStorage.setItem('secrets',JSON.stringify(val.data));
                     console.log(val.data);
-                    
+                    fetchUserAccounts();
+           fetchUserAccounts();
+        
                 }
             ).catch((r)=>{
                     notify();    
@@ -55,8 +57,7 @@ const fetchUserAccounts=()=>{
      
          
 
-       fetchUserAccounts();
-        
+    
       
 },[navigate]);
 

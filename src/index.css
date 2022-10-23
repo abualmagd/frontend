@@ -673,6 +673,21 @@ cursor: pointer;
   font-size: larger;
 }
 
+.letter-counter{
+  display: flex;
+  align-self: flex-end;
+  margin-right: 5px;
+  font-size: .8rem;
+  color: #2be77d;
+}
+
+.letter-counter-red{
+  display: flex;
+  align-self: flex-end;
+  margin-right: 5px;
+  font-size: .8rem;
+  color: #ee4752;
+}
 
 
 

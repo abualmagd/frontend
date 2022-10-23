@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { BsImage, BsPlus } from "react-icons/bs";
 import * as Scroll from "react-scroll";
-import { postTweet } from "../../../controller/tweetController";
+import { postThread, postTweet } from "../../../controller/tweetController";
 import { ToastContainer,toast } from "react-toastify";
 export default function Post(props) {
     const [focusedInput, setFocusIndex] = useState(0);
@@ -12,8 +12,16 @@ export default function Post(props) {
         video: ""
     }]);
 
+    const letterCounter=(twt)=>{
+        if(280-twt.content.length>0){
+            return "letter-counter";
+        }else{
+            return "letter-counter-red";
+        }
+    }
+
     const notify=()=>toast.error("sorry somthing error");
-    const notifyOk=()=>toast.done("your tweet posted succesfully");
+    const notifyOk=()=>toast("your tweet posted succesfully");
     const inputRef=useRef([]);
 
     useEffect(()=>{
@@ -26,7 +34,8 @@ export default function Post(props) {
         setTweets(listOfTweets => [...listOfTweets, [{
             content: "new tweet",
             image: "",
-            video: ""
+            video: "",
+            tweetOrder:focusedInput+1
         }]]);
         setFocusIndex(focusedInput+1)
 
@@ -105,19 +114,22 @@ var myScroll=Scroll.animateScroll;
 
     const postDirectly = () => {
         ///call api to post tweet or threed directly
-        if(listOfTweets.length>0&&listOfTweets.length<2&&listOfTweets[0]["content"]!==''){
             var e = document.getElementById("#chosenAccount");
-            var index=e.value;
-           // console.log(index)
-           // console.info(props.accounts[index])
+            var index=e.value;   
+        if(listOfTweets.length>0&&listOfTweets.length<2&&listOfTweets[0]["content"]!==''){
+
             postTweet(listOfTweets[0]["content"],props.accounts[index]).then(
                 (value)=>{
                     
                     
                     notifyOk();
                     console.log(value.data);
-                    clear();
+                   
                 }
+            ).then(
+               (v)=>{
+                 clear();
+               } 
             ).catch(
                 (error)=>{
                     console.error(error);
@@ -125,6 +137,25 @@ var myScroll=Scroll.animateScroll;
                 }
             );
           console.log(listOfTweets);  
+        }else{
+            var user=localStorage.getItem('current')
+            postThread(listOfTweets,props.accounts[index],user["id"]).then(
+                (value)=>{
+                    notifyOk();
+
+                    console.log(value);
+                }
+            ).then(
+                (v)=>{
+                    clear();
+                  } 
+            ).catch(
+                (error)=>{
+                    console.log(error);
+                    notify();
+
+                }
+            );
         }
         
     }
@@ -134,7 +165,8 @@ var myScroll=Scroll.animateScroll;
         setTweets([{
             content: "",
             image: "",
-            video: ""
+            video: "",
+            tweetOrder:0
         }]);
 
     }
@@ -184,7 +216,7 @@ var myScroll=Scroll.animateScroll;
                     <img className="post-image" src={tweet.image} alt="not found" />
                     <div className="delete-image" onClick={() => removeImage(indx)}><BsPlus /></div>
                 </div>}
-               { tweet.content&&<div>{280-tweet.content.length}</div> /*edit here css*/}
+               { tweet.content&&<span className={letterCounter(tweet)}>{280-tweet.content.length}</span> /*edit here css*/}
             </div>
        );
     });
